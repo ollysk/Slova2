@@ -1,0 +1,138 @@
+<resources>
+  <string name="action_settings">Settings</string>
+  <string name="title_activity_words">Words</string>
+
+  <string name="app_name">Slová/</string>
+  <string name="help_info"><![CDATA[<h1>Ahoj!</h1>With this app, you can learn Slovak most used words.<p>Every word has usage examples with a translation. </p><p>To hide the learned word just tap on the Eye icon on the app\'s Toolbar. </p><p>To extend examples count in your native language, download the Language Add-on. </p>]]></string>
+  <string name="hit_to_show_translation">Press to translate</string>
+  <string name="pref_title_show_translation">Show the translation</string>
+  <string name="pref_description_show_translation">"Show the translation to the native language"</string>
+
+  <string name="title_activity_settings">Settings</string>
+  <string name="next">Next</string>
+  <string name="remove_word">Remove word</string>
+  <string name="search">Search</string>
+  <string name="home">Home</string>
+  <string name="settings">Settings</string>
+  <string name="help">Help</string>
+
+  <string name="exit">Exit</string>
+  <string name="sw_keepScreenWake_s">Keep the screen on for an additional 15 minutes</string>
+  <string name="sw_keepScreenWake_t">Keep the screen on</string>
+  <string name="pref_native_lang_s">Choose your native language</string>
+  <string name="pref_native_lang_t">First language</string>
+  <string name="pref_secondary_lang_s">Choose your second language</string>
+  <string name="pref_secondary_lang_t">Second language</string>
+  <string name="cb_show_secondary_lang_s">Show the translation to the second language</string>
+  <string name="cb_show_secondary_lang_t">Show secondary translation</string>
+  <string name="pref_font_size_t">Font size</string>
+  <string name="pref_email_t">Email</string>
+  <string name="pref_email_s">Input your e-mail</string>
+  <string name="pref_limit_excerpts_t">Examples count</string>
+  <string name="pref_limit_excerpts_s">Choose how many examples to show</string>
+  <string name="started_download_extras">Started the download: Extras</string>
+  <string name="lang_downloaded" translatable="false">\u2714</string>
+  <string name="dw_moreExamples"><![CDATA[<hr><span style=\'font-size:70%;\'>No results found.</span><hr>]]></string>
+  <string name="download_list">Language add-ons</string>
+  <string name="cb_hide_learned_words_t">Hide learned words</string>
+  <string name="cb_hide_learned_words_s">Hide learned words</string>
+  <string name="choose_db_to_download">Choose the database to download</string>
+  <string name="download_completed">Download completed successfully</string>
+  <string name="download_checked">Download</string>
+  <string name="delete_checked">Delete</string>
+  <string name="stats">Statistics</string>
+  <string name="set_email">Set the email address (in app Settings) first</string>
+  <string name="sync">Sync</string>
+  <string name="download_lang_addon"><![CDATA[<hr><span style=\'font-size:70%%;color:grey0;\'><h3>&#9432; Download free extended language add-ons %1$s</h3></span><hr>]]></string>
+  <string name="start_again">Start</string>
+  <string name="words">Words</string>
+
+  <string name="title_activity_quiz">Quiz</string>
+  <string name="main">Main</string>
+
+  <string name="title_activity_start">Slova</string>
+  <string name="tts_lang_missing">Text to Speech for %s language is missing.</string>
+  <string name="pref_fab_size_t">Round button</string>
+  <string name="pref_pause_duration_t">Pause duration</string>
+  <string name="pref_pause_duration_s">Speech pause duration (milliseconds)</string>
+  <string name="pref_font_size_s">Snippets font size</string>
+  <string name="pref_fab_size_s">Floating Action Button size</string>
+
+  <string-array name="pref_lang_titles">
+    <item>English</item>
+    <item>Русский</item>
+    <item>Українська</item>
+  </string-array>
+
+  <string-array name="pref_lang">
+    <item>EN</item>
+    <item>RU</item>
+    <item>UK</item>
+  </string-array>
+
+  <string-array name="pref_font_size_titles">
+    <item>50%</item>
+    <item>75%</item>
+    <item>100%</item>
+    <item>150%</item>
+    <item>200%</item>
+  </string-array>
+  <string-array name="pref_font_size">
+    <item>50</item>
+    <item>75</item>
+    <item>100</item>
+    <item>150</item>
+    <item>200</item>
+  </string-array>
+
+  <string-array name="pref_words_mode_titles">
+    <item>Semi-auto</item>
+    <item>Manual</item>
+    <item>Auto</item>
+    <item>Silent</item>
+  </string-array>
+  <string-array name="pref_words_mode">
+    <item>SEMIAUTO</item>
+    <item>MANUAL</item>
+    <item>AUTO</item>
+    <item>SILENT</item>
+  </string-array>
+
+  <string-array name="pref_limit_excerpts">
+    <item>5</item>
+    <item>10</item>
+    <item>15</item>
+    <item>20</item>
+  </string-array>
+  <string-array name="start_intent_names">
+    <item>words.WordsActivity</item>
+    <item>wordext.WordExtActivity</item>
+    <item>quiz.QuizActivity</item>
+    <item>quiz.QuizActivity</item>
+    <item>settings.SettingsActivity</item>
+    <item>ExtrasList</item>
+    <item>Stats</item>
+    <item>common.popup.PopupActivity</item>
+  </string-array>
+  <string-array name="start_intent_texts">
+    <item>Words</item>
+    <item>Snippets</item>
+    <item>Quiz</item>
+    <item>Quiz v.2</item>
+    <item>Settings</item>
+    <item>Add-ons</item>
+    <item>Statistics</item>
+    <item>Help</item>
+  </string-array>
+  <string-array name="start_intent_extras">
+    <item>Empty</item>
+    <item>Main</item>
+    <item>TextQuizOne</item>
+    <item>TextQuizTwo</item>
+    <item>Settings</item>
+    <item>Add-ons</item>
+    <item>Statistics</item>
+    <item>HELP</item>
+  </string-array>
+
+</resources>

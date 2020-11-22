@@ -1,0 +1,198 @@
+<style>
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                white-space: nowrap;
+            }
+
+            .idRes {
+                position: static;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                font-size: xx-large;
+                color: #88C425;
+            }
+
+            .button {
+                background-color: #7FC7AF;
+                border: none;
+                color: white;
+                text-align: center;
+                vertical-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: xx-large;
+                cursor: pointer;
+                width: 50%;
+                height: 60px;
+            }
+
+            .pale {
+                opacity: 0.4;
+            }
+
+            .btn-group {
+            display: flex;
+            }
+
+            #idOk {
+
+            }
+            #idNotOk {
+                background-color: #FF3D7F;
+            }
+
+</style>
+
+<div class=footer>
+    <div class="btn-group">
+        <button class='button' id='idOk' onclick="commander(true)">OK</button>
+        <button class='button' id='idNotOk' onclick="commander(false)">X</button>
+    </div>
+</div>
+<span class=idRes id='idRes'></span>
+
+<script>
+            var nextId = 1;
+            var prevNextId = 0;
+            var correctAns = 0;
+            var wrongAns = 0;
+            var colorCorrect = "#88C425";
+            var colorWrong = "#FA2A00";
+            var colorNext = "#2e3992";
+            wordsLen = words.length - 1;
+
+            decorateNextElem(nextId);
+            idRes = document.getElementById("idRes");
+            idRes.innerHTML = "<h1> <br> &#8721;" + Android.getScore() + "% &#10003; </h1><br>";
+            function onWordClick(id) {
+
+                prevNextId = nextId;
+                nextId = id + 1;
+
+                setCurrElem(id, document.getElementById(id));
+
+                if (isCorrect == false) {
+                    setAnswerIsCorrect(id, true);
+                } else {
+                    setAnswerIsCorrect(id, false);
+                }
+
+
+                if (nextId > prevNextId + 1 || prevNextId > nextId + 1) {
+                    document.getElementById(prevNextId).style.color = "black";
+                }
+                currElem.scrollIntoView();
+                decorateNextElem(nextId);
+
+
+            }
+
+            function addScore(quizScore, correctValStripped) {
+                if (quizScore > 0) {
+                    correctAns++;
+                }
+                if (quizScore < 0) {
+                    wrongAns++;
+                }
+                Android.scoreAdd(quizScore, correctValStripped);
+
+            }
+
+            function commander(asCorrect) {
+                if (nextId >= wordsLen) {
+                    return;
+                }
+
+                currElem.scrollIntoView();
+
+                if (asCorrect == false) {
+                    currElem.click();
+
+                } else {
+
+
+                    if (isCorrect == false) {
+
+                        setAnswerIsCorrect(nextId, false);
+                    } else {
+
+                        setAnswerIsCorrect(nextId, true);
+                    }
+
+                    nextId++;
+                    decorateNextElem(nextId);
+
+                }
+                perc = 0;
+                if (correctAns > 0) { perc = Math.floor(correctAns * 100 / (correctAns + wrongAns)); }
+                idRes.innerHTML = "<h1>" + perc + "% &#10003; <br> &#8721;" + Android.getScore() + "% &#10003; </h1><br>";
+
+
+
+
+            }
+
+            function setCurrData(id) {
+
+                if (words[id] != null) {
+                    correctVal = words[id][1];
+                    correctValStripped = words[id][2];
+                    isCorrect = words[id][3];
+                }
+            }
+
+            function setAnswerIsCorrect(id, isCorrect) {
+
+                setCurrData(id);
+                setColor = colorWrong;
+                setAns = -1;
+                if (isCorrect == true) {
+                    setColor = colorCorrect;
+                    setAns = 1;
+                }
+                currElem.innerHTML = correctVal;
+                currElem.style.color = setColor;
+                addScore(setAns, correctValStripped);
+
+                currElem.removeAttribute("onclick");
+
+            }
+
+            function setCurrElem(id, elem) {
+
+                if (elem != null) {
+                    setCurrData(id);
+                    currElem = elem;
+                }
+            }
+            function decorateNextElem(nextId) {
+                nextElem = document.getElementById(nextId);
+
+                if (nextElem != null) {
+                    nextElem.style.color = colorNext;
+                    nextElem.innerHTML = "<u>" + nextElem.innerHTML + "</u>";
+                    setCurrElem(nextId, nextElem);
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

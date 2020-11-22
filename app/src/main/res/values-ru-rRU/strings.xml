@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="sync">Синхронизировать</string>
+  <string name="set_email">Сначала установите мейл в Настройках</string>
+  <string name="start_again">Старт</string>
+  <string name="words">Список слов</string>
+
+</resources>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="today.learnslovak.first">
+
+  <application
+      android:name=".presentation.common.BaseApplication"
+      android:allowBackup="true"
+      android:icon="@mipmap/ic_launcher"
+      android:label="@string/app_name"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:supportsRtl="true"
+      android:theme="@style/AppTheme">
+    <activity
+        android:name=".presentation.ui.common.popup.PopupActivity"
+        android:theme="@style/AppTheme.PopupTheme" />
+    <activity android:name=".presentation.ui.common.BaseActivity" />
+    <activity
+        android:name=".presentation.ui.quiz.QuizActivity"
+        android:label="@string/title_activity_quiz"
+        android:launchMode="singleTop"
+        android:noHistory="true"
+        android:parentActivityName=".presentation.ui.start.StartActivity" />
+    <activity
+        android:name=".presentation.ui.start.StartActivity"
+        android:label="@string/title_activity_start"
+        android:launchMode="standard"
+        android:noHistory="false" />
+    <activity
+        android:name=".presentation.ui.start.SplashActivity"
+        android:theme="@style/AppThemeSplashScreen">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <!--
+todo When "android:parentActivityName=".adapter.ui.start.StartActivity"" set click on Home will always return to StartActivity
+    despite the fact that Settings could be started from any other Activity (by menu click)
+    To enforce return to calling activity, parentActivityName should be deleted
+    and onOptionsItemSelected(MenuItem item) with case R.id.home override
+    and in SlovaMenu should be check NavUtils.getParentActivityIntent!=null (that parent activity set)
+    if activity is not set and its not the Root activity than "onBackPressed"
+    -->
+    <activity
+        android:name=".presentation.ui.settings.SettingsActivity"
+        android:label="@string/title_activity_settings"
+        android:launchMode="singleTop"
+        android:noHistory="true"
+        android:parentActivityName=".presentation.ui.start.StartActivity" />
+    <activity
+        android:name=".presentation.ui.words.WordsActivity"
+        android:label="@string/title_activity_words"
+        android:launchMode="singleTop"
+        android:noHistory="true"
+        android:parentActivityName=".presentation.ui.start.StartActivity" />
+    <activity
+        android:name=".presentation.ui.wordext.WordExtActivity"
+        android:label="@string/app_name"
+        android:launchMode="singleTop"
+        android:noHistory="true"
+        android:parentActivityName=".presentation.ui.start.StartActivity" />
+  </application>
+
+  <uses-permission android:name="android.permission.INTERNET" />
+
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+</manifest>

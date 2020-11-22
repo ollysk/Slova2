@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+
+    <!-- android:keepScreenOn="true"-->
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp"
+        android:indeterminate="false"
+        android:visibility="gone"
+        app:layout_anchorGravity="bottom"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="10dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        />
+
+    <Spinner
+        android:id="@+id/words_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:defaultValue="100"
+        android:entries="@array/pref_words_mode_titles"
+        android:entryValues="@array/pref_words_mode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+
+    <!--        <TextView
+                android:id="@+id/textView1"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="8dp"
+                android:gravity="center"
+                android:text='@{viewModel.word.source}'
+                android:textSize="20sp"
+
+                android:textStyle="bold"
+                android:visibility="@{viewModel.word.transVisible ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toTopOf="@+id/textView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/fab1"
+                tools:text="@tools:sample/lorem" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text='@{viewModel.word.trans}'
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@tools:sample/first_names" />-->
+
+    <!--   <Button
+        android:id="@+id/btnDel"
+        android:layout_width="43dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="X"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn1"
+        app:layout_constraintStart_toStartOf="parent" /> -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment"
+        android:name="today.learnslovak.first.presentation.ui.words.RecyclerViewFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/words_mode"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab1"
+        android:layout_width="61dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:contentDescription="string/next"
+        android:focusable="true"
+        android:layerType="none"
+        android:onClick="@{() -> viewModel.onFabClick()}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:backgroundTint="@android:color/holo_green_dark"
+        app:elevation="1dp"
+        app:srcCompat="@android:drawable/ic_media_next"
+        />
+
+    <include
+        layout="@layout/toolbar_main"
+        android:id="@+id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Small"
+        />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <data>
+    <import type="android.view.View" />
+    <variable
+        name="viewModel"
+        type="today.learnslovak.first.presentation.ui.words.WordsViewModel"
+        />
+  </data>
+</layout>

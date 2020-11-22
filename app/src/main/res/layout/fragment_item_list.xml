@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rvWords"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
+      app:layoutManager="LinearLayoutManager"
+      tools:listitem="@layout/words_recyclerview_row"
+      />
+
+  <data>
+    <import type="android.view.View" />
+    <variable
+        name="viewModel"
+        type="today.learnslovak.first.presentation.ui.words.WordsViewModel"
+        />
+    <variable
+        name="itemClickListener"
+        type="today.learnslovak.first.presentation.ui.words.RecyclerViewClickListener"
+        />
+    <variable
+        name="word"
+        type="today.learnslovak.first.domain.model.Word"
+        />
+  </data>
+</layout>

@@ -1,0 +1,143 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <CheckBoxPreference
+      app:defaultValue="false"
+      app:iconSpaceReserved="false"
+      app:key="@string/PREF_SHOW_LANG2"
+      app:summary="@string/cb_show_secondary_lang_s"
+      app:title="@string/cb_show_secondary_lang_t" />
+  <CheckBoxPreference
+      app:defaultValue="true"
+      app:iconSpaceReserved="false"
+      app:key="@string/PREF_HIDE_LEARNED"
+      app:summary="@string/cb_hide_learned_words_s"
+      app:title="@string/cb_hide_learned_words_t" />
+
+  <ListPreference
+      app:entries="@array/pref_lang_titles"
+      app:entryValues="@array/pref_lang"
+      app:iconSpaceReserved="false"
+      app:key="@string/PREF_LANG1"
+      app:negativeButtonText="@null"
+      app:positiveButtonText="@null"
+      app:summary="@string/pref_native_lang_s"
+      app:title="@string/pref_native_lang_t" />
+  <ListPreference
+      app:entries="@array/pref_lang_titles"
+      app:entryValues="@array/pref_lang"
+      app:iconSpaceReserved="false"
+      app:key="@string/PREF_LANG2"
+      app:negativeButtonText="@null"
+      app:positiveButtonText="@null"
+      app:summary="@string/pref_secondary_lang_s"
+      app:title="@string/pref_secondary_lang_t" />
+  <ListPreference
+      app:defaultValue="10"
+      app:entries="@array/pref_limit_excerpts"
+      app:entryValues="@array/pref_limit_excerpts"
+      app:iconSpaceReserved="false"
+      app:key="@string/PREF_SNIPPETS_LIMIT"
+      app:negativeButtonText="@null"
+      app:positiveButtonText="@null"
+      app:summary="@string/pref_limit_excerpts_s"
+      app:title="@string/pref_limit_excerpts_t" />
+  <ListPreference
+      app:defaultValue="0"
+      app:entries="@array/pref_words_mode_titles"
+      app:entryValues="@array/pref_words_mode"
+      app:iconSpaceReserved="false"
+      app:key="@string/PREF_WORDS_MODE"
+      app:negativeButtonText="@null"
+      app:positiveButtonText="@null"
+      app:title="Default Words mode" />
+  <!--  <ListPreference
+      app:defaultValue="100"
+      app:entries="@array/pref_font_size_titles"
+      app:entryValues="@array/pref_font_size"
+      app:key="@string/PREF_FONT_SIZE"
+      app:negativeButtonText="@null"
+      app:positiveButtonText="@null"
+      app:title="@string/pref_font_size_t"
+      app:iconSpaceReserved="false" />-->
+  <SeekBarPreference
+      android:layout_width="match_parent"
+      android:max="400"
+      app:defaultValue="100"
+      app:iconSpaceReserved="false"
+      app:key="@string/PREF_FONT_SIZE"
+      app:summary="@string/pref_font_size_s"
+      app:title="@string/pref_font_size_t" />
+
+  <!--  <EditTextPreference
+      android:inputType="textEmailAddress"
+      app:key="@string/PREF_EMAIL"
+      app:maxLines="1"
+      android:selectAllOnFocus="true"
+      app:singleLine="true"
+      app:summary="@string/pref_email_s"
+      app:title="@string/pref_email_t"
+      app:iconSpaceReserved="false" />-->
+
+  <SeekBarPreference
+      android:layout_width="match_parent"
+      android:max="5000"
+      app:defaultValue="200"
+      app:iconSpaceReserved="false"
+      app:key="@string/PREF_WORDS_PAUSE_DURATION"
+      app:summary="@string/pref_pause_duration_s"
+      app:title="@string/pref_pause_duration_t" />
+
+
+  <SeekBarPreference
+      android:layout_width="match_parent"
+      android:max="400"
+      app:defaultValue="56"
+      app:iconSpaceReserved="false"
+      app:key="@string/PREF_FAB_SIZE"
+      app:summary="@string/pref_fab_size_s"
+      app:title="@string/pref_fab_size_t" />
+
+  <SwitchPreference
+      app:defaultValue="false"
+      app:iconSpaceReserved="false"
+      app:key="@string/PREF_KEEP_SCREEN_ON"
+      app:summary="@string/sw_keepScreenWake_s"
+      app:title="@string/sw_keepScreenWake_t" />
+  <SwitchPreference
+      app:defaultValue="true"
+      app:iconSpaceReserved="false"
+      app:key="@string/PREF_SHOW_TRANS"
+      app:summary="@string/pref_description_show_translation"
+      app:title="@string/pref_title_show_translation" />
+  <!-- app:min="56" API 26 and higher only -->
+  <!--  <ListPreference
+      app:defaultValue="1"
+      app:entries="@array/pref_net_limits_titles"
+      app:entryValues="@array/pref_net_limits"
+      app:key="pref_net_limits"
+      app:negativeButtonText="@null"
+      app:positiveButtonText="@null"
+      app:title="@string/pref_net_limits_t"
+      app:summary="@string/pref_net_limits_s"
+      />
+-->
+
+
+  <!--
+   <ListPreference
+        app:defaultValue="-1"
+        app:entries="@array/pref_example_list_titles"
+        app:entryValues="@array/pref_example_list_values"
+        app:key="example_list"
+        app:negativeButtonText="@null"
+        app:positiveButtonText="@null"
+        app:title="@string/pref_title_add_friends_to_messages" />
+  -->
+  <!--
+  <PreferenceCategory
+    app:summary="words"
+    app:title="words" >
+  </PreferenceCategory>  -->
+
+</PreferenceScreen>

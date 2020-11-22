@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+  <string name="PREF_INSTALL_ID" translatable="false">INSTALL_ID</string>
+  <string name="PREF_LANG_SEARCH" translatable="false">PREF_LANG_SEARCH</string> <!-- SIC! -->
+  <string name="PREF_LANG1" translatable="false">LANG1</string>
+  <string name="PREF_LANG2" translatable="false">LANG2</string>
+  <string name="PREF_SHOW_LANG2" translatable="false">SHOW_LANG2</string>
+  <string name="PREF_KEEP_SCREEN_ON" translatable="false">KEEP_SCREEN_ON</string>
+  <string name="PREF_HIDE_LEARNED" translatable="false">HIDE_LEARNED</string>
+  <string name="PREF_SNIPPETS_LIMIT" translatable="false">SNIPPETS_LIMIT</string>
+  <string name="PREF_FONT_SIZE" translatable="false">FONT_SIZE</string>
+  <string name="PREF_EMAIL" translatable="false">EMAIL</string>
+  <string name="PREF_SHOW_TRANS" translatable="false">SHOW_TRANS</string>
+  <string name="PREF_AVAILABLE_LANGS" translatable="false">AVAILABLE_LANGS</string>
+  <string name="PREF_LAST_SYNC" translatable="false">LAST_SYNC</string>
+  <string name="PREF_MAIN_CURSOR_POS" translatable="false">MAIN_CURSOR_POS</string>
+  <string name="PREF_WORDS_CURSOR_POS" translatable="false">WORDS_CURSOR_POS</string>
+  <string name="PREF_WORDS_PAUSE_DURATION" translatable="false">WORDS_PAUSE_DURATION</string>
+  <string name="PREF_WORDS_MODE" translatable="false">WORDS_MODE</string>
+  <string name="PREF_WORDS_HIDE_TRANS" translatable="false">WORDS_HIDE_TRANS</string>
+  <string name="PREF_FAB_SIZE" translatable="false">FAB_SIZE</string>
+</resources>

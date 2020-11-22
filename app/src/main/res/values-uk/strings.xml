@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Slová/</string>
+  <string name="next">Далі</string>
+  <string name="help_info"><![CDATA[<h1>Ahoj!</h1>За допомогою цього додатку зручно вивчати найпопулярніші слова словацької мови<p>Кожне слово має приклади його використання </p><p>Для того, щоб сховати вивчене слово, натисніть на іконку "Око" на Панелі додатку </p><p>Щоб розширити кількість прикладів на рідній мові, завантажте Мовне Розширення </p> <p>Незважаючи на те, що якість перекладу прикладів використання є автоматичною, він значно допомагає зрозуміти його контекст ]]></string>
+  <string name="pref_title_show_translation">Показувати переклад</string>
+  <string name="pref_description_show_translation">Показувати переклад на рідну мову</string>
+  <string name="exit">Вихід</string>
+  <string name="sw_keepScreenWake_t">Вимикання екрану</string>
+  <string name="pref_font_size_t">Розмір шрифту</string>
+  <string name="search">Пошук</string>
+  <string name="home">Додому</string>
+  <string name="settings">Налаштування</string>
+  <string name="sw_keepScreenWake_s">Не вимикати екран на 15 хвилин довше</string>
+  <string name="pref_native_lang_s">Оберіть рідну мову</string>
+  <string name="pref_native_lang_t">Рідна мова</string>
+  <string name="pref_secondary_lang_s">Оберіть рідну мову (додаткову)</string>
+  <string name="pref_secondary_lang_t">Рідна мова (додаткова)</string>
+  <string name="cb_show_secondary_lang_s">Відображати переклад на додаткову мову</string>
+  <string name="cb_show_secondary_lang_t">Відображати додатковий переклад</string>
+  <string name="title_activity_settings">Налаштування</string>
+  <string name="hit_to_show_translation">Натисніть для перекладу</string>
+  <string name="pref_limit_excerpts_t">Кількість прикладів</string>
+  <string name="pref_limit_excerpts_s">Оберіть кількість прикладів для відображення</string>
+  <string name="remove_word">Сховати слово</string>
+  <string name="started_download_extras">Початок завантаження</string>
+  <string name="dw_moreExamples"><![CDATA[<hr><span style=\'font-size:70%;\'>Нічого не знайдено.</span><hr>]]></string>
+  <string name="download_list">Мовні розширення</string>
+  <string name="cb_hide_learned_words_t">Сховати вивчені слова</string>
+  <string name="cb_hide_learned_words_s">Сховати вивчені слова</string>
+  <string name="download_lang_addon"><![CDATA[<hr><span style=\'font-size:70%%;color:grey;\'><h3>&#9432; Завантажте безкоштовні мовні розширення %1$s</h3></span><hr>]]></string>
+  <string name="choose_db_to_download">Оберіть мову для завантаження</string>
+  <string name="help">Довідка</string>
+  <string name="download_checked">Завантажити</string>
+  <string name="download_completed">Завантаження завершене</string>
+  <string name="delete_checked">Видалити</string>
+  <string name="stats">Статистика</string>
+  <string name="sync">Синхронізувати</string>
+  <string name="set_email">Спочатку вставновіть мейл в Налаштуваннях</string>
+  <string name="start_again">Старт</string>
+  <string name="words">Список слів</string>
+  <string-array name="pref_words_mode_titles">
+    <item>Напівавтоматичний</item>
+    <item>Ручний</item>
+    <item>Автоматичний</item>
+    <item>Беззвучний</item>
+  </string-array>
+  <string-array name="start_intent_texts">
+    <item>Слова</item>
+    <item>Слова з текстом</item>
+    <item>Вікторина</item>
+    <item>Вікторина №2</item>
+    <item>Налаштування</item>
+    <item>Мовні розширення</item>
+    <item>Статистика</item>
+    <item>Довідка</item>
+  </string-array>
+</resources>

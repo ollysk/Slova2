@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Slová/</string>
+  <string name="next">Далее</string>
+  <string name="help_info"><![CDATA[<h1>Ahoj!</h1>C помощью этого приложениея удобно учить самые популярные словацкие слова.<p> Для каждого слова отображаются примеры использования с переводом</p><p> Для того, чтобы спрятать выученное слово, просто нажмите иконку "Глаз" на Панели приложения </p><p> Для увеличения количества примеров на родном языке, скачайте Языковое Расширение.</p><p>Несмотря на то, что качество перевода примеров автоматическое, он значительно помогает понять контекст примера. ]]></string>
+  <string name="pref_title_show_translation">Отображать перевод</string>
+  <string name="pref_description_show_translation">Отображать перевод на родной язык</string>
+  <string name="help">Помощь</string>
+  <string name="exit">Выход</string>
+  <string name="sw_keepScreenWake_t">Отключение экрана</string>
+  <string name="pref_email_s">Введите мейл</string>
+  <string name="pref_email_t">Адрес электронной почты</string>
+  <string name="pref_font_size_t">Размер шрифта</string>
+  <string name="search">Поиск</string>
+  <string name="home">Домой</string>
+  <string name="settings">Настройки</string>
+  <string name="sw_keepScreenWake_s">Не отключать экран на 15 дольше</string>
+  <string name="pref_native_lang_s">Выберите родной язык</string>
+  <string name="pref_native_lang_t">Родной язык</string>
+  <string name="pref_secondary_lang_s">Выберите родной язык (дополнительный)</string>
+  <string name="pref_secondary_lang_t">Родной язык (дополнительный)</string>
+  <string name="cb_show_secondary_lang_s">Отображать перевод на дополнительный язык</string>
+  <string name="cb_show_secondary_lang_t">Показывать дополнительный перевод</string>
+  <string name="title_activity_settings">Настройки</string>
+  <string name="hit_to_show_translation">Нажмите для перевода</string>
+  <string name="pref_limit_excerpts_t">Количество примеров</string>
+  <string name="pref_limit_excerpts_s">Выберите сколько примеров отображать</string>
+  <string name="remove_word">Скрыть слово</string>
+  <string name="started_download_extras">Начало загрузки</string>
+  <string name="dw_moreExamples"><![CDATA[<hr><span style=\'font-size:70%;\'>Ничего не найдено.</span><hr>]]></string>
+  <string name="download_list">Языковые расширения</string>
+  <string name="cb_hide_learned_words_t">Скрыть выученные слова</string>
+  <string name="cb_hide_learned_words_s">Скрыть выученные слова</string>
+  <string name="download_lang_addon"><![CDATA[<hr><span style=\'font-size:70%%;color:grey0;\'><h3>&#9432; Скачайте бесплатные языковые расширения %1$s</h3></span><hr>]]></string>
+  <string name="choose_db_to_download">Выберите язык для загрузки</string>
+  <string name="delete_checked">Удалить</string>
+  <string name="download_checked">Скачать</string>
+  <string name="download_completed">Загрузка завершена</string>
+  <string name="stats">Статистика</string>
+  <string name="sync">Синхронизировать</string>
+  <string name="set_email">Сначала установите мейл в Настройках</string>
+  <string name="start_again">Старт</string>
+  <string name="words">Список слов</string>
+  <string-array name="pref_words_mode_titles">
+    <item>Полуавтоматически</item>
+    <item>Вручную</item>
+    <item>Автоматически</item>
+    <item>Беззвучно</item>
+  </string-array>
+  <string-array name="start_intent_texts">
+    <item>Слова</item>
+    <item>Слова с текстом</item>
+    <item>Викторина</item>
+    <item>Викторина №2</item>
+    <item>Настройки</item>
+    <item>Языковые расширения</item>
+    <item>Статистика</item>
+    <item>Помощь</item>
+  </string-array>
+</resources>
