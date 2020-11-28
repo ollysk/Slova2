@@ -2,8 +2,8 @@ package today.learnslovak.first.domain.usecase;
 
 import android.text.TextUtils;
 import androidx.lifecycle.LiveData;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
@@ -28,17 +28,16 @@ public class GetSnippets {
   }
 
   private List<Integer> csvToList(String csv) {
-    return TextUtils.isEmpty(csv) ? new ArrayList<>()
-        : Arrays.stream(csv.split(",")).map(Integer::valueOf).collect(Collectors.toList());
+    return TextUtils.isEmpty(csv) ? Collections.emptyList()
+        : Arrays.stream(csv.split(","))
+            .map(String::trim).map(Integer::valueOf).collect(Collectors.toList());
   }
 
   public LiveData<List<Snippet>> find(Word word) {
-
     return repo.find(csvToList(word.getSnippetIds()));
   }
 
   public LiveData<List<Snippet>> searchByLang(String query) {
-
     return repo.searchByLang(query, pref.get(Pref.LANG_SEARCH, Lang.SK));
   }
 }

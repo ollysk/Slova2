@@ -2,7 +2,6 @@ package today.learnslovak.first.data.db.mapper;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
 import today.learnslovak.first.data.db.model.SnippetDb;
@@ -55,7 +54,7 @@ public class SnippetMapper {
         .build();
   }
 
-  public Snippet toSnippet(SnippetDb SnippetDb, List<Lang> langs) {
+  public Snippet toSnippet(SnippetDb SnippetDb, LinkedHashSet<Lang> langs) {
     Map<Lang, String> langMap = toSnippetDbLangMap(SnippetDb);
     int i = 0;
     Snippet.SnippetBuilder snippet = Snippet.builder().id(SnippetDb.getId());

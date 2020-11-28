@@ -1,7 +1,7 @@
 package today.learnslovak.first.data.db.mapper;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
 import org.junit.jupiter.api.Test;
 import today.learnslovak.first.data.db.model.SnippetDb;
 import today.learnslovak.first.domain.model.Lang;
@@ -17,7 +17,8 @@ class SnippetMapperTest {
 
   @Test
   void toSnippet() {
-    List<Lang> availableLangs = Arrays.asList(Lang.EN, Lang.SK, Lang.RU, Lang.UK);
+    LinkedHashSet<Lang> availableLangs =
+        new LinkedHashSet<>(Arrays.asList(Lang.EN, Lang.SK, Lang.RU, Lang.UK));
     SnippetMapper snippetMapper = new SnippetMapper();
     SnippetDb snippetDb = SnippetDb.builder().id(1).sk("sk").en("en").ru("ru").uk("uk").build();
     Snippet snippet = Snippet.builder()

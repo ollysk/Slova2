@@ -21,7 +21,7 @@ public class WordDbMapper {
   }
 
   public List<WordDb> toWordDb(String json) {
-    List<WordDb> wordDbs = new ArrayList<>();
+    List<WordDb> wordDbs = new ArrayList<>(500);
     try {
       wordDbs = fromJson(json);
     } catch (Exception e) {

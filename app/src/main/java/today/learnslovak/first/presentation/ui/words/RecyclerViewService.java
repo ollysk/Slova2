@@ -10,7 +10,7 @@ import today.learnslovak.first.presentation.common.tts.TtsService;
 public class RecyclerViewService {
 
   private final TtsService ttsService;
-  private final List<Word> words = new ArrayList<>();
+  private final List<Word> words = new ArrayList<>(100);
   private final int PRELOAD_CHUNK_SIZE = 100;
   int clickPosition = 0;
   int clickOnItemCount = 0;

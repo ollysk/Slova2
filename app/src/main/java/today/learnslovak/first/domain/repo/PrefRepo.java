@@ -1,6 +1,6 @@
 package today.learnslovak.first.domain.repo;
 
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -33,9 +33,9 @@ public interface PrefRepo {
 
   void addSkipId(Lang lang, int id);
 
-  /** Contract is to return list ordered from LANG0 to LANGX **/
-  default List<Lang> getAvailableLangs() {
+  /** Contract is to return Set ordered from LANG0 to LANGX **/
+  default LinkedHashSet<Lang> getAvailableLangs() {
     return Stream.of(get(Pref.LANG0, Lang.SK), get(Pref.LANG1, Lang.EN), get(Pref.LANG2, Lang.RU),
-        get(Pref.LANG3, Lang.UK)).collect(Collectors.toList());
+        get(Pref.LANG3, Lang.UK)).collect(Collectors.toCollection(LinkedHashSet::new));
   }
 }

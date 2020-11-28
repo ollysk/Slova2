@@ -18,7 +18,7 @@ public class SnippetDbMapper {
   }
 
   public List<SnippetDb> toSnippetDb(String json) {
-    List<SnippetDb> SnippetDbs = new ArrayList<>();
+    List<SnippetDb> SnippetDbs = new ArrayList<>(500);
     try {
       SnippetDbs = fromJson(json);
     } catch (Exception e) {

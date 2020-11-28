@@ -24,7 +24,7 @@ public class TtsService implements TtsCallback {
   private final Map<Lang, TextToSpeech> ttsMap = new HashMap<>();
   private final Context context;
   private final float speechRate = 1;
-  private final List<Map<String, Lang>> speakBatch = new ArrayList<>();
+  private final List<Map<String, Lang>> speakBatch = new ArrayList<>(10);
   private int lastUtteranceHash;
   private TtsCallback callback;
 

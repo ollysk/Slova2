@@ -1,7 +1,7 @@
 package today.learnslovak.first.data.db.mapper;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 class WordMapperTest {
 
   @Mock PrefRepo prefRepo;
-  List<Lang> availableLangs;
+  LinkedHashSet<Lang> availableLangs;
   Map<Lang, String> map;
   Word word;
   WordMapper wordMapper;
@@ -32,27 +32,20 @@ class WordMapperTest {
   @BeforeEach
   void setUp() {
     availableLangs = Stream.of(Lang.SK, Lang.EN, Lang.RU, Lang.UK)
-        .collect(Collectors.toList());
-
-    map = Stream.of(new Object[][] {
-        { availableLangs.get(0), "0" },
-        { availableLangs.get(1), "1" },
-        { availableLangs.get(2), "2" },
-        { availableLangs.get(3), "3" },
-    }).collect(Collectors.toMap(data -> (Lang) data[0], data -> (String) data[1]));
-
+        .collect(Collectors.toCollection(LinkedHashSet::new));
+    map = availableLangs.stream().collect(Collectors.toMap(lang -> lang, Enum::name));
     when(prefRepo.get(Pref.SHOW_LANG2, false)).thenReturn(false);
     when(prefRepo.getAvailableLangs()).thenReturn(availableLangs);
-
+    Iterator<Lang> langIterator = availableLangs.iterator();
     word = Word.builder().id(1)
         .source(map.get(Lang.SK))
-        .sourceLang(availableLangs.get(0))
+        .sourceLang(langIterator.next())
         .trans(map.get(Lang.EN))
-        .transLang(availableLangs.get(1))
+        .transLang(langIterator.next())
         .transSecond(map.get(Lang.RU))
-        .transSecondLang(availableLangs.get(2))
+        .transSecondLang(langIterator.next())
         .transThird(map.get(Lang.UK))
-        .transThirdLang(availableLangs.get(3))
+        .transThirdLang(langIterator.next())
         .build();
 
     wordMapper = new WordMapper(prefRepo);
@@ -73,19 +66,5 @@ class WordMapperTest {
     Word word2 = wordMapper.toWord(wordDb, false);
 
     assertThat(word2).isEqualTo(word);
-  }
-
-  @Test
-  void toWord2() {
-    Collections.shuffle(availableLangs);
-    WordDb wordDb = WordDb.builder().id(1)
-        .sk(map.get(Lang.SK))
-        .en(map.get(Lang.EN))
-        .ru(map.get(Lang.RU))
-        .uk(map.get(Lang.UK))
-        .build();
-    Word word2 = wordMapper.toWord(wordDb, false);
-
-    assertThat(word2).isNotEqualTo(word);
   }
 }
