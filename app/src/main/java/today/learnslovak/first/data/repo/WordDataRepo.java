@@ -143,7 +143,4 @@ public class WordDataRepo implements WordRepo {
     return db.wordDao().findMaxWordId();
   }
 
-  @Override public void populate() {
-    // dbPopulator.populateWordTableFromRemote();
-  }
 }

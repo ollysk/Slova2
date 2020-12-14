@@ -6,3 +6,5 @@ Will be fixed later:
 - Performance is not fully optimized (loop string concats, omitted @Singleton, etc)
 - Translation is 90% complete
 - Firebase services temporarily removed
+
+//todo move language flag inside searchview edittext or just show lang flag only after click on search magnifier

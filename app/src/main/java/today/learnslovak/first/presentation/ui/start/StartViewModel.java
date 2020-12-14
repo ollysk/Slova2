@@ -23,11 +23,7 @@ public class StartViewModel extends ViewModel {
     return wvLiveData;
   }
 
-  public LiveData<Integer> findDbMaxWordId() {
-    return getDb.findMaxWordId();
+  public void init() {
+    getDb.populateDbIfNeeded();
   }
-
-/*  public void populate() {
-    getWords.populate();
-  }*/
 }

@@ -7,6 +7,8 @@ public class DataConfig {
 
   //API 28 doesn't accept http, https only
   public final String SERVER_URL = "http://192.168.0.2/";
+  public final String SERVER_ANNOUNCE_FILENAME = "announce.json";
+  public final String SERVER_PATCH_DIR = "patches/";
   public final String DB_NAME = "slova.db";
   public final String TABLE_NAME_MAIN = "main";
   public final String TABLE_NAME_SNIPPET = "snippet";

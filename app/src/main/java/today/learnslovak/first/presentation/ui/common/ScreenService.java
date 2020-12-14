@@ -2,6 +2,7 @@ package today.learnslovak.first.presentation.ui.common;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import android.view.View;
 import android.webkit.WebView;
@@ -13,7 +14,7 @@ import javax.inject.Inject;
 public class ScreenService {
 
   private static final int DISABLE_KEEP_SCREEN_ON = 0;
-  private final Handler handler = new Handler();
+  private final Handler handler = new Handler(Looper.getMainLooper());
   private final Context context;
   private View view;
 

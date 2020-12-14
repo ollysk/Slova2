@@ -27,12 +27,7 @@ public class StartActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     htmlStartProvider.setCss(getCss());
     viewModel.setWebView(htmlStartProvider.getHtml());
-    //todo polish prepopulation logic
-    viewModel.findDbMaxWordId().observe(this, (id) -> {
-      if (id != null && id < 1000) {
-        // viewModel.populate();
-      }
-    });
+    viewModel.init();
   }
 
   @Override public void setUpDataBinding() {

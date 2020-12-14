@@ -4,6 +4,7 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ActivityComponent;
+import today.learnslovak.first.data.repo.ConfigDataRepo;
 import today.learnslovak.first.data.repo.PrefDataRepo;
 import today.learnslovak.first.data.repo.QuizDataRepo;
 import today.learnslovak.first.data.repo.SnippetDataRepo;
@@ -12,6 +13,7 @@ import today.learnslovak.first.data.store.pref.LocalPrefDataStore;
 import today.learnslovak.first.data.store.pref.PrefDataStore;
 import today.learnslovak.first.data.store.skip.LocalDbSkipDataStore;
 import today.learnslovak.first.data.store.skip.SkipDataStore;
+import today.learnslovak.first.domain.repo.ConfigRepo;
 import today.learnslovak.first.domain.repo.PrefRepo;
 import today.learnslovak.first.domain.repo.QuizRepo;
 import today.learnslovak.first.domain.repo.SnippetRepo;
@@ -28,6 +30,8 @@ public abstract class CoreModule {
   @Binds public abstract PrefRepo bindPrefRepo(PrefDataRepo prefDataRepo);
 
   @Binds public abstract QuizRepo bindQuizRepo(QuizDataRepo quizDataRepo);
+
+  @Binds public abstract ConfigRepo bindConfigRepo(ConfigDataRepo configDataRepo);
 
   @Binds public abstract PrefDataStore bindPrefDataStore(LocalPrefDataStore localPrefDataStore);
 

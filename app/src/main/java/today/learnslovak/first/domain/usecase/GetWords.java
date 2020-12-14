@@ -21,10 +21,6 @@ public class GetWords {
   }
 
   public LiveData<Word> findOneFrom(final int id) {
-
-    if (id > 0) {
-      //   setSkip(id);
-    }
     return repo.findOneFrom(id);
   }
 
@@ -44,10 +40,6 @@ public class GetWords {
   public LiveData<List<Word>> findFrom(int id) {
 
     return repo.findFrom(id);
-  }
-
-  public void populate() {
-    repo.populate();
   }
 
   public int getWordsLastId() {

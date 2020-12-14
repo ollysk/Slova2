@@ -24,5 +24,4 @@ public interface WordRepo {
 
   LiveData<Integer> findMaxWordId();
 
-  void populate();
 }

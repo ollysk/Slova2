@@ -32,4 +32,12 @@ public class LocalDataStore implements DataStore {
     return snippetDbMapper.toSnippetDb(
         assetsUtil.getFromAssets(ASSETS_JSON_PATH + SNIPPET_JSON_FILENAME));
   }
+
+  @Override public List<WordDb> getWordDbsPatch(int patchLevel) {
+    return null;
+  }
+
+  @Override public List<SnippetDb> getSnippetDbsPatch(int patchLevel) {
+    return null;
+  }
 }

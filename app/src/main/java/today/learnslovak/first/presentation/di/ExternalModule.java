@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
-import dagger.hilt.components.SingletonComponent;
+import dagger.hilt.android.components.ActivityComponent;
 
-@InstallIn(SingletonComponent.class)
+@InstallIn(ActivityComponent.class)
 @Module
 public class ExternalModule {
 

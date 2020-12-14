@@ -12,4 +12,8 @@ public interface DataStore {
   List<WordDb> getWordDbs();
 
   List<SnippetDb> getSnippetDbs();
+
+  List<WordDb> getWordDbsPatch(int patchLevel);
+
+  List<SnippetDb> getSnippetDbsPatch(int patchLevel);
 }

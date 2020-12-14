@@ -50,4 +50,7 @@ import today.learnslovak.first.domain.model.Lang;
 
   @Query("select max(id) from main")
   LiveData<Integer> findMaxWordId();
+
+  @Query("select count(id) from main")
+  int getWordsCount();
 }
