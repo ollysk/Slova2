@@ -3,21 +3,14 @@ package today.learnslovak.first.data.db.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 import today.learnslovak.first.data.common.util.DataConfig;
 
-@Data @NoArgsConstructor
-/*
-After gradle update from room-compiler:2.3.0-alpha02 to alpha03, @Builder annotation started causing compilation error:
-"javax.lang.model.element.UnknownElementException: Unknown element"
-Had to switch to experimental @SuperBuilder to fix the problem
-Good side - @AllArgsConstructor is no longer needed for Builder pattern to work
-TODO check again after room gradle next upgrade if it is possible to switch back to non-experimental @Builder
-@AllArgsConstructor
-@Builder */
-@SuperBuilder
+@Data @NoArgsConstructor @AllArgsConstructor
+@Builder
 @Entity(tableName = DataConfig.TABLE_NAME_MAIN)
 public class WordDb {
 

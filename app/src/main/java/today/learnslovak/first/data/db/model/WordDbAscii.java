@@ -2,14 +2,14 @@ package today.learnslovak.first.data.db.model;
 
 import androidx.room.Entity;
 import androidx.room.Fts4;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 import today.learnslovak.first.data.common.util.DataConfig;
 
-@Data @NoArgsConstructor
-//@AllArgsConstructor
-@SuperBuilder
+@Data @NoArgsConstructor @AllArgsConstructor
+@Builder
 @Fts4 @Entity(tableName = DataConfig.TABLE_NAME_MAIN_ASCII_FTS)
 public class WordDbAscii {
   /*    @PrimaryKey
