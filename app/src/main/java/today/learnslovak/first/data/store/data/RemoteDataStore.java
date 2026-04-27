@@ -8,7 +8,7 @@ import java.util.concurrent.ExecutionException;
 import javax.inject.Inject;
 import retrofit2.Call;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.moshi.MoshiConverterFactory;
 import timber.log.Timber;
 import today.learnslovak.first.data.common.util.DataConfig;
 import today.learnslovak.first.data.db.model.SnippetDb;
@@ -27,7 +27,7 @@ public class RemoteDataStore implements DataStore {
 
   RemoteDataService getServiceInstance() {
     return service == null ? new Retrofit.Builder().baseUrl(getDataServerUrl())
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(MoshiConverterFactory.create())
         .build().create(RemoteDataService.class) : service;
   }
 

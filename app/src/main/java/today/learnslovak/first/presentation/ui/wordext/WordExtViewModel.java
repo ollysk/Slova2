@@ -1,6 +1,7 @@
 package today.learnslovak.first.presentation.ui.wordext;
 
-import androidx.hilt.lifecycle.ViewModelInject;
+import dagger.hilt.android.lifecycle.HiltViewModel;
+import javax.inject.Inject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
@@ -19,6 +20,7 @@ import today.learnslovak.first.presentation.ui.common.toolbar.menu.MenuSearch;
 
 import static today.learnslovak.first.presentation.html.HtmlProviderFactory.HtmlType.TTS;
 
+@HiltViewModel
 public class WordExtViewModel extends ViewModel implements MenuSearch {
 
   private final GetWords getWords;
@@ -30,16 +32,13 @@ public class WordExtViewModel extends ViewModel implements MenuSearch {
   private final MutableLiveData<String> searchQuery = new MutableLiveData<>();
   private final MutableLiveData<Integer> wordId = new MutableLiveData<>(0);
   private int retainedWordId;
-  private final LiveData<Word> wordLive =
-      Transformations.switchMap(wordId, this::getSuitableWord);
+  private final LiveData<Word> wordLive;
   private HtmlSnippetProvider htmlSnippetProvider;
   //private MutableLiveData<String> suggestionsQuery = new MutableLiveData<>();
-  private final LiveData<String> htmlLiveData = Transformations.switchMap(wordLive,
-      newWord -> hasSnippetIds(newWord) || searchQuery.getValue() == null ? htmlFromWordSnippets(
-          newWord) : htmlFromSearchSnippets(searchQuery.getValue()));
+  private final LiveData<String> htmlLiveData;
   private String css;
 
-  @ViewModelInject public WordExtViewModel(GetWords getWords, GetSnippets getSnippets,
+  @Inject public WordExtViewModel(GetWords getWords, GetSnippets getSnippets,
       HtmlProviderFactory htmlProviderFactory, GetPrefs getPrefs, TtsService ttsService) {
 
     this.getWords = getWords;
@@ -47,6 +46,11 @@ public class WordExtViewModel extends ViewModel implements MenuSearch {
     this.htmlProviderFactory = htmlProviderFactory;
     this.getPrefs = getPrefs;
     this.ttsService = ttsService;
+
+    this.wordLive = Transformations.switchMap(wordId, this::getSuitableWord);
+    this.htmlLiveData = Transformations.switchMap(wordLive,
+        newWord -> hasSnippetIds(newWord) || searchQuery.getValue() == null ? htmlFromWordSnippets(
+            newWord) : htmlFromSearchSnippets(searchQuery.getValue()));
   }
 
   HtmlSnippetProvider getHtmlProvider() {

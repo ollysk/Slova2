@@ -3,7 +3,6 @@ package today.learnslovak.first.data.repo;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 import androidx.sqlite.db.SimpleSQLiteQuery;
-import com.google.gson.Gson;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
@@ -30,18 +29,20 @@ public class WordDataRepo implements WordRepo {
   private final WordMapper wordMapper;
   private final SkipDataStore skipDataStore;
   private final PrefRepo prefRepo;
+  private final WordDbMapper wordDbMapper;
 
   @Inject public WordDataRepo(Db db, WordMapper wordMapper, SkipDataStore skipDataStore,
-      PrefRepo prefRepo) {
+      PrefRepo prefRepo, WordDbMapper wordDbMapper) {
     this.db = db;
     this.wordMapper = wordMapper;
     this.skipDataStore = skipDataStore;
     this.prefRepo = prefRepo;
+    this.wordDbMapper = wordDbMapper;
   }
 
   private void init(LinkedHashSet<Lang> langs) {
     String json = "";
-    db.wordDao().insertAll(new WordDbMapper(new Gson()).toWordDb(json));
+    db.wordDao().insertAll(wordDbMapper.toWordDb(json));
   }
 
   @Override public LiveData<Word> findOneFrom(int id) {

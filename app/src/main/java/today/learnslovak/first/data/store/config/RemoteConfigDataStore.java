@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import retrofit2.Call;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.moshi.MoshiConverterFactory;
 import timber.log.Timber;
 import today.learnslovak.first.data.common.util.DataConfig;
 import today.learnslovak.first.data.store.data.RemoteDataService;
@@ -15,7 +15,7 @@ import today.learnslovak.first.domain.model.Config;
 public class RemoteConfigDataStore {
 
   final RemoteDataService remoteDataService = new Retrofit.Builder().baseUrl(DataConfig.SERVER_URL)
-      .addConverterFactory(GsonConverterFactory.create())
+      .addConverterFactory(MoshiConverterFactory.create())
       .build().create(RemoteDataService.class);
 
   @Inject public RemoteConfigDataStore() {

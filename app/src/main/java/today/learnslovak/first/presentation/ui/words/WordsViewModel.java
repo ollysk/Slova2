@@ -1,6 +1,7 @@
 package today.learnslovak.first.presentation.ui.words;
 
-import androidx.hilt.lifecycle.ViewModelInject;
+import dagger.hilt.android.lifecycle.HiltViewModel;
+import javax.inject.Inject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
@@ -11,6 +12,7 @@ import today.learnslovak.first.domain.usecase.GetPrefs;
 import today.learnslovak.first.domain.usecase.GetWords;
 import today.learnslovak.first.presentation.ui.common.PrefForUi;
 
+@HiltViewModel
 public class WordsViewModel extends ViewModel {
 
   private final GetWords getWords;
@@ -20,7 +22,7 @@ public class WordsViewModel extends ViewModel {
   private final MutableLiveData<Integer> clickPosition = new MutableLiveData<>(0);
   private final MutableLiveData<Integer> wordId = new MutableLiveData<>();
 
-  @ViewModelInject
+  @Inject
   public WordsViewModel(GetWords getWords, RecyclerViewService rvService, GetPrefs getPrefs) {
     this.getWords = getWords;
     this.rvService = rvService;

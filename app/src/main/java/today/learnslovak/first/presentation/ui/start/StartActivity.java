@@ -3,6 +3,7 @@ package today.learnslovak.first.presentation.ui.start;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
+import androidx.activity.OnBackPressedCallback;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import dagger.hilt.android.AndroidEntryPoint;
@@ -28,6 +29,15 @@ public class StartActivity extends BaseActivity {
     htmlStartProvider.setCss(getCss());
     viewModel.setWebView(htmlStartProvider.getHtml());
     viewModel.init();
+
+    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+      @Override
+      public void handleOnBackPressed() {
+        Timber.i("One more back press will quit the app. Are you sure?");
+        setEnabled(false);
+        getOnBackPressedDispatcher().onBackPressed();
+      }
+    });
   }
 
   @Override public void setUpDataBinding() {
@@ -60,13 +70,6 @@ public class StartActivity extends BaseActivity {
 
   @Override public void setSkipWordId() {
 
-  }
-
-  @Override public void onBackPressed() {
-
-    super.onBackPressed();
-    Timber.i("One more back press will quit the app. Are you sure?");
-    //if sure super.onBackPressed();
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {

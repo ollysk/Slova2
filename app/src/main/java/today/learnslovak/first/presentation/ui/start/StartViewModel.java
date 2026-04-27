@@ -1,17 +1,19 @@
 package today.learnslovak.first.presentation.ui.start;
 
-import androidx.hilt.lifecycle.ViewModelInject;
+import dagger.hilt.android.lifecycle.HiltViewModel;
+import javax.inject.Inject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import today.learnslovak.first.domain.usecase.GetDb;
 
+@HiltViewModel
 public class StartViewModel extends ViewModel {
 
   private final GetDb getDb;
   private final MutableLiveData<String> wvLiveData = new MutableLiveData<>("<html><body>");
 
-  @ViewModelInject public StartViewModel(GetDb getDb) {
+  @Inject public StartViewModel(GetDb getDb) {
     this.getDb = getDb;
   }
 

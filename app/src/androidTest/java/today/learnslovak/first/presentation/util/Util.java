@@ -30,14 +30,14 @@ public final class Util {
 
   private static final int LANG_COUNT = 4;
   public static List<String[]> wordsSkEn = Arrays.asList(
-      new String[][] {
-          { "byť", "to be" }, { "v", "in" }, { "a", "and" }, { "na", "on the" }, { "sa", "self" },
-          { "s", "with" }
-      });
+          new String[][] {
+                  { "byť", "to be" }, { "v", "in" }, { "a", "and" }, { "na", "on the" }, { "sa", "self" },
+                  { "s", "with" }
+          });
   public static List<String[]> suggestionsSk = Arrays.asList(
-      new String[][] { { "by", "byť" }, { "ktory", "ktorý" }, { "ktor", "ktorý" } });
+          new String[][] { { "by", "byť" }, { "ktory", "ktorý" }, { "ktor", "ktorý" } });
   public static List<String[]> suggestionsEnSk = Arrays.asList(
-      new String[][] { { "to b", "byť" }, { "whi", "ktorý" }, { "which", "ktorý" } });
+          new String[][] { { "to b", "byť" }, { "whi", "ktorý" }, { "which", "ktorý" } });
   static int flagIndex = 0;
 
   public static void menuStartClick() {
@@ -76,7 +76,7 @@ public final class Util {
   public static void inputSearch(String query) {
     onView(withId(R.id.app_bar_search)).perform(click());
     onView(isAssignableFrom(AutoCompleteTextView.class))
-        .perform(click(), typeText(query));
+            .perform(click(), typeText(query));
     Espresso.closeSoftKeyboard();
   }
 
@@ -84,9 +84,9 @@ public final class Util {
   public static void submitSearch(String query) {
     onView(withId(R.id.app_bar_search)).perform(click());
     onView(isAssignableFrom(AutoCompleteTextView.class))
-        .perform(click(), replaceText(query))
-        .perform(pressKey(KeyEvent.KEYCODE_ENTER))
-        .perform(clearText());
+            .perform(click(), replaceText(query))
+            .perform(pressKey(KeyEvent.KEYCODE_ENTER))
+            .perform(clearText());
     Espresso.closeSoftKeyboard();
   }
 
@@ -103,10 +103,10 @@ public final class Util {
 
   public static void toggleHideLearnedPreference() throws InterruptedException {
     ActivityScenario<SettingsActivity> activityScenario =
-        ActivityScenario.launch(SettingsActivity.class);
+            ActivityScenario.launch(SettingsActivity.class);
     Thread.sleep(1000);
-    onView(withId(R.id.recycler_view))
-        .perform(actionOnItem(hasDescendant(withText(R.string.cb_hide_learned_words_t)), click()));
+    onView(withId(androidx.preference.R.id.recycler_view))
+            .perform(actionOnItem(hasDescendant(withText(R.string.cb_hide_learned_words_t)), click()));
     Thread.sleep(1000);
     activityScenario.close();
   }

@@ -1,5 +1,7 @@
 # Slova: learn Slovak language
-* Android app (SDK 30)
+* Android app (SDK 30) - since 2021
+* In April 2026, this app's dependencies were upgraded to the latest versions.
+* It now builds and works in the latest Android Studio Panda 4 | 2025.3.4 
 * Java 8, Jetpack, MVVM, LiveData, Room, Dagger/Hilt
 <table border=0>
 <tr>

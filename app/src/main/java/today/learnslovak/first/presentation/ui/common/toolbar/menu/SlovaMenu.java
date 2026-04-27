@@ -63,7 +63,7 @@ public class SlovaMenu {
 
     int id = item.getItemId();
 
-    if (id == R.id.home) {
+    if (id == android.R.id.home) {
 
       goUpIfPossibleOrGoBack();
     } else if (id == R.id.menu_settings) {
@@ -96,7 +96,7 @@ public class SlovaMenu {
     if (hasParentActivityInManifest()) {
       NavUtils.navigateUpFromSameTask(baseActivity);
     } else {
-      baseActivity.onBackPressed();
+      baseActivity.getOnBackPressedDispatcher().onBackPressed();
     }
   }
 

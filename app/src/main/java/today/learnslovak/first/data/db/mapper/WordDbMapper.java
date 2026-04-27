@@ -1,7 +1,8 @@
 package today.learnslovak.first.data.db.mapper;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
+import com.squareup.moshi.Types;
 import java.lang.reflect.Type;
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -14,10 +15,10 @@ import today.learnslovak.first.data.db.model.WordDbAscii;
 
 public class WordDbMapper {
 
-  private final Gson gson;
+  private final Moshi moshi;
 
-  @Inject public WordDbMapper(Gson gson) {
-    this.gson = gson;
+  @Inject public WordDbMapper(Moshi moshi) {
+    this.moshi = moshi;
   }
 
   public List<WordDb> toWordDb(String json) {
@@ -48,8 +49,9 @@ public class WordDbMapper {
     return Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
   }
 
-  private List<WordDb> fromJson(String json) throws IllegalStateException {
-    Type typeOfT = TypeToken.getParameterized(List.class, WordDb.class).getType();
-    return gson.fromJson(json, typeOfT);
+  private List<WordDb> fromJson(String json) throws Exception {
+    Type typeOfT = Types.newParameterizedType(List.class, WordDb.class);
+    JsonAdapter<List<WordDb>> adapter = moshi.adapter(typeOfT);
+    return adapter.fromJson(json);
   }
 }

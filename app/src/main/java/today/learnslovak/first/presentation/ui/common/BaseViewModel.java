@@ -1,6 +1,7 @@
 package today.learnslovak.first.presentation.ui.common;
 
-import androidx.hilt.lifecycle.ViewModelInject;
+import dagger.hilt.android.lifecycle.HiltViewModel;
+import javax.inject.Inject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
@@ -15,6 +16,7 @@ import today.learnslovak.first.presentation.common.tts.TtsService;
 import today.learnslovak.first.presentation.ui.common.toolbar.menu.MenuActions;
 import today.learnslovak.first.presentation.ui.common.toolbar.menu.MenuSearch;
 
+@HiltViewModel
 public class BaseViewModel extends ViewModel implements MenuActions, MenuSearch {
 
   private final GetWords getWords;
@@ -22,7 +24,7 @@ public class BaseViewModel extends ViewModel implements MenuActions, MenuSearch 
   private final TtsService ttsService;
   private final MutableLiveData<String> suggestionsQuery = new MutableLiveData<>();
 
-  @ViewModelInject
+  @Inject
   public BaseViewModel(GetWords getWords, GetPrefs getPrefs, TtsService ttsService) {
     this.getWords = getWords;
     this.getPrefs = getPrefs;

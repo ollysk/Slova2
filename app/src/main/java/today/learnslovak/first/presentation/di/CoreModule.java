@@ -3,7 +3,7 @@ package today.learnslovak.first.presentation.di;
 import dagger.Binds;
 import dagger.Module;
 import dagger.hilt.InstallIn;
-import dagger.hilt.android.components.ActivityComponent;
+import dagger.hilt.components.SingletonComponent;
 import today.learnslovak.first.data.repo.ConfigDataRepo;
 import today.learnslovak.first.data.repo.PrefDataRepo;
 import today.learnslovak.first.data.repo.QuizDataRepo;
@@ -19,7 +19,7 @@ import today.learnslovak.first.domain.repo.QuizRepo;
 import today.learnslovak.first.domain.repo.SnippetRepo;
 import today.learnslovak.first.domain.repo.WordRepo;
 
-@InstallIn(ActivityComponent.class)
+@InstallIn(SingletonComponent.class)
 @Module
 public abstract class CoreModule {
 
