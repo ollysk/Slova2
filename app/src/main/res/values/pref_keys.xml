@@ -6,6 +6,7 @@
   <string name="PREF_LANG1" translatable="false">LANG1</string>
   <string name="PREF_LANG2" translatable="false">LANG2</string>
   <string name="PREF_SHOW_LANG2" translatable="false">SHOW_LANG2</string>
+  <string name="PREF_SHOW_EXTENDED_INFO" translatable="false">SHOW_EXTENDED_INFO</string>
   <string name="PREF_KEEP_SCREEN_ON" translatable="false">KEEP_SCREEN_ON</string>
   <string name="PREF_HIDE_LEARNED" translatable="false">HIDE_LEARNED</string>
   <string name="PREF_SNIPPETS_LIMIT" translatable="false">SNIPPETS_LIMIT</string>

@@ -10,6 +10,12 @@
   <CheckBoxPreference
       app:defaultValue="true"
       app:iconSpaceReserved="false"
+      app:key="@string/PREF_SHOW_EXTENDED_INFO"
+      app:summary="@string/cb_show_extended_info_s"
+      app:title="@string/cb_show_extended_info_t" />
+  <CheckBoxPreference
+      app:defaultValue="true"
+      app:iconSpaceReserved="false"
       app:key="@string/PREF_HIDE_LEARNED"
       app:summary="@string/cb_hide_learned_words_s"
       app:title="@string/cb_hide_learned_words_t" />

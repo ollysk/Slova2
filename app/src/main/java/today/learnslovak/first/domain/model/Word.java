@@ -1,5 +1,7 @@
 package today.learnslovak.first.domain.model;
 
+import java.util.List;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -19,4 +21,25 @@ public class Word {
   private final String snippetIds;
   private boolean isTransVisible;
   private boolean isTransSecondVisible;
+  private boolean isExtendedInfoVisible;
+
+  private final String partOfSpeech;
+  private final List<DeclensionItem> declensions;
+  private final List<ConjugationItem> conjugations;
+
+  @Data @Builder
+  public static class DeclensionItem {
+    private final String number;
+    private final String caseName;
+    private final String gender;
+    private final String form;
+  }
+
+  @Data @Builder
+  public static class ConjugationItem {
+    private final String tense;
+    private final String person;
+    private final String number;
+    private final String form;
+  }
 }

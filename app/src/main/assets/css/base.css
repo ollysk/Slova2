@@ -50,3 +50,65 @@ eevertical-align: baseline;
 text-align:center;
 vertical-align:middle
 }
+
+.word-trans {
+  text-align: center;
+  font-size: 120%;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.part-of-speech {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.forms-summary {
+  text-align: center;
+  font-size: 85%;
+  color: #666;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+
+.toggle-tables {
+  text-align: center;
+  color: #4a6ea9;
+  font-size: 90%;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-bottom: 15px;
+}
+
+.extended-section {
+  margin-bottom: 20px;
+}
+
+.extended-section h3 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  color: #444;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 90%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  text-align: left;
+}
+
+th {
+  background-color: #6D6F7F;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

@@ -25,6 +25,8 @@
   <string name="pref_secondary_lang_t">Second language</string>
   <string name="cb_show_secondary_lang_s">Show the translation to the second language</string>
   <string name="cb_show_secondary_lang_t">Show secondary translation</string>
+  <string name="cb_show_extended_info_t">Show declensions tables</string>
+  <string name="cb_show_extended_info_s">Show declensions and conjugations tables</string>
   <string name="pref_font_size_t">Font size</string>
   <string name="pref_email_t">Email</string>
   <string name="pref_email_s">Input your e-mail</string>

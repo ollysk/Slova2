@@ -2,8 +2,12 @@ package today.learnslovak.first.data.db.mapper;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import javax.inject.Inject;
+
 import today.learnslovak.first.data.db.model.WordDb;
 import today.learnslovak.first.domain.model.Lang;
 import today.learnslovak.first.domain.model.Pref;
@@ -57,6 +61,9 @@ public class WordMapper {
         .en(langMap.get(Lang.EN))
         .ru(langMap.get(Lang.RU))
         .uk(langMap.get(Lang.UK))
+        .partOfSpeech(word.getPartOfSpeech())
+        .declensions(toWordDbDeclensions(word.getDeclensions()))
+        .conjugations(toWordDbConjugations(word.getConjugations()))
         .build();
   }
 
@@ -68,7 +75,11 @@ public class WordMapper {
         .id(wordDb.getId())
         .snippetIds(wordDb.getSnippetIds())
         .isTransVisible(isTransVisible)
-        .isTransSecondVisible(prefRepo.get(Pref.SHOW_LANG2, false));
+        .isTransSecondVisible(prefRepo.get(Pref.SHOW_LANG2, false))
+        .isExtendedInfoVisible(prefRepo.get(Pref.SHOW_EXTENDED_INFO, true))
+        .partOfSpeech(wordDb.getPartOfSpeech())
+        .declensions(toWordDeclensions(wordDb.getDeclensions()))
+        .conjugations(toWordConjugations(wordDb.getConjugations()));
 
     for (Lang lang : prefRepo.getAvailableLangs()) {
       if (i == 0) {
@@ -87,5 +98,53 @@ public class WordMapper {
       i++;
     }
     return word.build();
+  }
+
+  private List<Word.DeclensionItem> toWordDeclensions(List<WordDb.DeclensionItem> items) {
+    if (items == null) return null;
+    return items.stream()
+        .map(item -> Word.DeclensionItem.builder()
+            .number(item.getNumber())
+            .caseName(item.getCaseName())
+            .gender(item.getGender())
+            .form(item.getForm())
+            .build())
+        .collect(Collectors.toList());
+  }
+
+  private List<Word.ConjugationItem> toWordConjugations(List<WordDb.ConjugationItem> items) {
+    if (items == null) return null;
+    return items.stream()
+        .map(item -> Word.ConjugationItem.builder()
+            .tense(item.getTense())
+            .person(item.getPerson())
+            .number(item.getNumber())
+            .form(item.getForm())
+            .build())
+        .collect(Collectors.toList());
+  }
+
+  private List<WordDb.DeclensionItem> toWordDbDeclensions(List<Word.DeclensionItem> items) {
+    if (items == null) return null;
+    return items.stream()
+        .map(item -> WordDb.DeclensionItem.builder()
+            .number(item.getNumber())
+            .caseName(item.getCaseName())
+            .gender(item.getGender())
+            .form(item.getForm())
+            .build())
+        .collect(Collectors.toList());
+  }
+
+  private List<WordDb.ConjugationItem> toWordDbConjugations(List<Word.ConjugationItem> items) {
+    if (items == null) return null;
+    return items.stream()
+        .map(item -> WordDb.ConjugationItem.builder()
+            .tense(item.getTense())
+            .person(item.getPerson())
+            .number(item.getNumber())
+            .form(item.getForm())
+            .build())
+        .collect(Collectors.toList());
   }
 }

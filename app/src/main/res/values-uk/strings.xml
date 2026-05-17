@@ -7,6 +7,7 @@
   <string name="pref_description_show_translation">Показувати переклад на рідну мову</string>
   <string name="exit">Вихід</string>
   <string name="sw_keepScreenWake_t">Вимикання екрану</string>
+  <string name="cb_show_extended_info_s">Показати таблиці відмінювання та дієвідмінювання</string>
   <string name="pref_font_size_t">Розмір шрифту</string>
   <string name="search">Пошук</string>
   <string name="home">Додому</string>
@@ -55,4 +56,5 @@
     <item>Статистика</item>
     <item>Довідка</item>
   </string-array>
+    <string name="cb_show_extended_info_t">Показати відмінювання</string>
 </resources>

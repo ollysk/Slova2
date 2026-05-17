@@ -1,12 +1,17 @@
 package today.learnslovak.first.presentation.ui.wordext;
 
-import dagger.hilt.android.lifecycle.HiltViewModel;
-import javax.inject.Inject;
+import static today.learnslovak.first.presentation.html.HtmlProviderFactory.HtmlType.TTS;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
+
 import java.util.List;
+
+import javax.inject.Inject;
+
+import dagger.hilt.android.lifecycle.HiltViewModel;
 import today.learnslovak.first.domain.model.Lang;
 import today.learnslovak.first.domain.model.Snippet;
 import today.learnslovak.first.domain.model.Word;
@@ -18,8 +23,6 @@ import today.learnslovak.first.presentation.html.HtmlProviderFactory;
 import today.learnslovak.first.presentation.html.HtmlSnippetProvider;
 import today.learnslovak.first.presentation.ui.common.toolbar.menu.MenuSearch;
 
-import static today.learnslovak.first.presentation.html.HtmlProviderFactory.HtmlType.TTS;
-
 @HiltViewModel
 public class WordExtViewModel extends ViewModel implements MenuSearch {
 
@@ -30,7 +33,7 @@ public class WordExtViewModel extends ViewModel implements MenuSearch {
   private final TtsService ttsService;
   //private MutableLiveData<Integer> idWords = new MutableLiveData<>(1);
   private final MutableLiveData<String> searchQuery = new MutableLiveData<>();
-  private final MutableLiveData<Integer> wordId = new MutableLiveData<>(0);
+  private final MutableLiveData<Integer> wordId = new MutableLiveData<>();
   private int retainedWordId;
   private final LiveData<Word> wordLive;
   private HtmlSnippetProvider htmlSnippetProvider;

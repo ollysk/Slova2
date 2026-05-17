@@ -10,6 +10,7 @@
   <string name="sw_keepScreenWake_t">Отключение экрана</string>
   <string name="pref_email_s">Введите мейл</string>
   <string name="pref_email_t">Адрес электронной почты</string>
+  <string name="cb_show_extended_info_s">Показать таблицы склонений и спряжений</string>
   <string name="pref_font_size_t">Размер шрифта</string>
   <string name="search">Поиск</string>
   <string name="home">Домой</string>
@@ -57,4 +58,5 @@
     <item>Статистика</item>
     <item>Помощь</item>
   </string-array>
+    <string name="cb_show_extended_info_t">Показать склонения</string>
 </resources>

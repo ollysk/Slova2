@@ -1,8 +1,12 @@
 package today.learnslovak.first.presentation.ui.wordext;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
 import today.learnslovak.first.domain.model.Lang;
 import today.learnslovak.first.domain.model.Snippet;
 import today.learnslovak.first.domain.model.Word;
@@ -32,6 +36,7 @@ public class HtmlTtsProvider implements HtmlSnippetProvider {
   public String getHtml(Word word, List<Snippet> snippets, String searchQuery, Lang searchLang) {
     populateHeader();
     wordDecorate(word);
+    extendedInfoDecorate(word);
     snippetsDecorate(snippets, searchQuery, searchLang);
     populateFooter();
     return res.toString();
@@ -55,6 +60,75 @@ public class HtmlTtsProvider implements HtmlSnippetProvider {
     ttsService.addToSpeakBatch(word.getTrans(), word.getTransLang());
     if (word.isTransSecondVisible()) {
       ttsService.addToSpeakBatch(word.getTransSecond(), word.getTransSecondLang());
+    }
+  }
+
+  private void extendedInfoDecorate(Word word) {
+    if (!word.isExtendedInfoVisible()) {
+      return;
+    }
+
+    if (word.getPartOfSpeech() != null && !word.getPartOfSpeech().isEmpty()) {
+      res.append("<div class='part-of-speech'>").append(word.getPartOfSpeech()).append("</div>");
+    }
+
+    Set<String> forms = new LinkedHashSet<>();
+    if (word.getDeclensions() != null) {
+      for (Word.DeclensionItem item : word.getDeclensions()) {
+        if (item.getForm() != null && !item.getForm().isEmpty()) {
+          forms.add(item.getForm());
+        }
+      }
+    }
+    if (word.getConjugations() != null) {
+      for (Word.ConjugationItem item : word.getConjugations()) {
+        if (item.getForm() != null && !item.getForm().isEmpty()) {
+          forms.add(item.getForm());
+        }
+      }
+    }
+
+    if (!forms.isEmpty()) {
+      res.append("<div class='forms-summary'>")
+          .append(String.join(", ", forms))
+          .append("</div>");
+
+      res.append("<div class='toggle-tables' onclick=\"var x = document.getElementById('extended-info-tables'); if (x.style.display === 'none') { x.style.display = 'block'; this.innerHTML = 'Hide details'; x.scrollIntoView(); } else { x.style.display = 'none'; this.innerHTML = 'Show details'; }\">Show details</div>");
+
+      res.append("<div id='extended-info-tables' style='display:none;'>");
+
+      if (word.getDeclensions() != null && !word.getDeclensions().isEmpty()) {
+        res.append("<div class='extended-section'>");
+        res.append("<table class='declension-table'>");
+        res.append("<tr><th>Form</th><th>Case</th><th>Number</th><th>Gender</th></tr>");
+        for (Word.DeclensionItem item : word.getDeclensions()) {
+          res.append("<tr>")
+              .append("<td><b>").append(item.getForm() != null ? item.getForm() : "").append("</b></td>")
+              .append("<td>").append(item.getCaseName() != null ? item.getCaseName() : "").append("</td>")
+              .append("<td>").append(item.getNumber() != null ? item.getNumber() : "").append("</td>")
+              .append("<td>").append(item.getGender() != null ? item.getGender() : "").append("</td>")
+              .append("</tr>");
+        }
+        res.append("</table>");
+        res.append("</div>");
+      }
+
+      if (word.getConjugations() != null && !word.getConjugations().isEmpty()) {
+        res.append("<div class='extended-section'>");
+        res.append("<table class='conjugation-table'>");
+        res.append("<tr><th>Form</th><th>Tense</th><th>Person</th><th>Number</th></tr>");
+        for (Word.ConjugationItem item : word.getConjugations()) {
+          res.append("<tr>")
+              .append("<td>").append(item.getForm() != null ? item.getForm() : "").append("</td>")
+              .append("<td>").append(item.getTense() != null ? item.getTense() : "").append("</td>")
+              .append("<td>").append(item.getPerson() != null ? item.getPerson() : "").append("</td>")
+              .append("<td>").append(item.getNumber() != null ? item.getNumber() : "").append("</td>")
+              .append("</tr>");
+        }
+        res.append("</table>");
+        res.append("</div>");
+      }
+      res.append("</div>"); // end extended-info-tables
     }
   }
 
