@@ -1,0 +1,8 @@
+  {
+    "wordPatchLevel": "1",
+    "snippetPatchLevel": "1",
+    "dataServerUrl": "http://192.168.0.2/",
+"wordJsonFilename":"words.json",     
+"snippetJsonFilename":"snippets.json"
+ }
+ 
