@@ -1,11 +1,14 @@
 package today.learnslovak.first.data.store.pref;
 
 import android.content.SharedPreferences;
+
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import javax.inject.Inject;
+
 import today.learnslovak.first.domain.model.Lang;
 import today.learnslovak.first.domain.model.Preferences;
 
@@ -55,42 +58,55 @@ public class LocalPrefDataStore implements PrefDataStore {
 
   @SuppressWarnings("unchecked")
   @Override public <T> T get(Preferences key, T defaultValue) {
-    return defaultValue instanceof String ? (T) prefs.getString(key.name(), (String) defaultValue)
-        : defaultValue instanceof Enum ? (T) Enum.valueOf(
-            ((Enum<?>) defaultValue).getDeclaringClass(),
-            prefs.getString(key.name().toUpperCase(), defaultValue.toString()))
-            : defaultValue instanceof Set ? (T) prefs.getStringSet(key.name(),
-                (Set<String>) (defaultValue))
-                : defaultValue instanceof Integer ? (T) (Integer) prefs.getInt(key.name(),
-                    (Integer) defaultValue)
-                    : defaultValue instanceof Boolean ? (T) (Boolean) prefs.getBoolean(key.name(),
-                        (Boolean) defaultValue)
-                        : defaultValue instanceof Long ? (T) (Long) prefs.getLong(key.name(),
-                            (Long) defaultValue)
-                            : defaultValue instanceof Float ? (T) (Float) prefs.getFloat(key.name(),
-                                (Float) defaultValue) : defaultValue instanceof Double
-                                ? (T) (Double) Double.longBitsToDouble(prefs.getLong(key.name(),
-                                Double.doubleToLongBits((Double) defaultValue))) : defaultValue;
+    if (defaultValue == null) return null;
+
+    String keyName = key.name();
+    try {
+      return switch (defaultValue) {
+        case String s -> (T) prefs.getString(keyName, s);
+        case Integer i -> (T) (Integer) prefs.getInt(keyName, i);
+        case Boolean b -> (T) (Boolean) prefs.getBoolean(keyName, b);
+        case Long l -> (T) (Long) prefs.getLong(keyName, l);
+        case Float f -> (T) (Float) prefs.getFloat(keyName, f);
+        case Double d -> (T) (Double) Double.longBitsToDouble(
+            prefs.getLong(keyName, Double.doubleToLongBits(d)));
+        case Enum<?> e -> (T) parseEnum(e, prefs.getString(keyName, e.name()));
+        case Set<?> s -> (T) prefs.getStringSet(keyName, (Set<String>) s);
+        default -> defaultValue;
+      };
+    } catch (Exception e) {
+      return defaultValue;
+    }
+  }
+
+  @SuppressWarnings("unchecked")
+  private static <E extends Enum<E>> E parseEnum(Enum<?> fallback, String stored) {
+    try {
+      return Enum.valueOf((Class<E>) fallback.getDeclaringClass(), stored);
+    } catch (IllegalArgumentException e) {
+      return (E) fallback;
+    }
   }
 
   @SuppressWarnings("unchecked")
   @Override public <T> T getFromString(Preferences key, T defaultValue) {
-    return defaultValue instanceof String ? (T) prefs.getString(key.name(), (String) defaultValue)
-        : defaultValue instanceof Enum<?> ? (T) Enum.valueOf(
-            ((Enum<?>) defaultValue).getDeclaringClass(),
-            prefs.getString(key.name().toUpperCase(), defaultValue.toString()))
-            : defaultValue instanceof Integer ? (T) Integer.valueOf(
-                getString(key, defaultValue))
-                : defaultValue instanceof Boolean ? (T) Boolean.valueOf(
-                    getString(key, defaultValue))
-                    : defaultValue instanceof Long ? (T) Long.valueOf(
-                        getString(key, defaultValue))
-                        : defaultValue instanceof Float ? (T) Float.valueOf(
-                            getString(key, defaultValue)) : defaultValue;
-  }
+    if (defaultValue == null) return null;
 
-  private <T> String getString(Preferences key, T defaultValue) {
-    return prefs.getString(key.name(), defaultValue.toString());
+    String keyName = key.name();
+    try {
+      return switch (defaultValue) {
+        case String s -> (T) prefs.getString(keyName, s);
+        case Enum<?> e -> (T) parseEnum(e, prefs.getString(keyName, e.name()));
+        case Integer i -> (T) Integer.valueOf(prefs.getString(keyName, String.valueOf(i)));
+        case Boolean b -> (T) Boolean.valueOf(prefs.getString(keyName, String.valueOf(b)));
+        case Long l -> (T) Long.valueOf(prefs.getString(keyName, String.valueOf(l)));
+        case Float f -> (T) Float.valueOf(prefs.getString(keyName, String.valueOf(f)));
+        case Double d -> (T) Double.valueOf(prefs.getString(keyName, String.valueOf(d)));
+        default -> defaultValue;
+      };
+    } catch (Exception e) {
+      return defaultValue;
+    }
   }
 
   @Override public Set<Integer> getSkipIds(Lang lang) {
@@ -118,26 +134,19 @@ public class LocalPrefDataStore implements PrefDataStore {
     saveChanges();
   }
 
+  @SuppressWarnings("unchecked")
   @Override public void put(Preferences key, Object value) {
-
     edit();
-    if (value instanceof String) {
-      editor.putString(key.name(), (String) value);
-    }
-    if (value instanceof Enum) {
-      editor.putString(key.name(), ((Enum<?>) value).name());
-    } else if (value instanceof Set) {
-      editor.putStringSet(key.name(), (Set<String>) value);
-    } else if (value instanceof Integer) {
-      editor.putInt(key.name(), (Integer) value);
-    } else if (value instanceof Boolean) {
-      editor.putBoolean(key.name(), (Boolean) value);
-    } else if (value instanceof Long) {
-      editor.putLong(key.name(), (Long) value);
-    } else if (value instanceof Float) {
-      editor.putFloat(key.name(), (Float) value);
-    } else if (value instanceof Double) {
-      editor.putLong(key.name(), Double.doubleToRawLongBits((double) value));
+    switch (value) {
+      case String s -> editor.putString(key.name(), s);
+      case Enum<?> e -> editor.putString(key.name(), e.name());
+      case Set<?> s -> editor.putStringSet(key.name(), (Set<String>) s);
+      case Integer i -> editor.putInt(key.name(), i);
+      case Boolean b -> editor.putBoolean(key.name(), b);
+      case Long l -> editor.putLong(key.name(), l);
+      case Float f -> editor.putFloat(key.name(), f);
+      case Double d -> editor.putLong(key.name(), Double.doubleToRawLongBits(d));
+      case null, default -> {}
     }
     saveChanges();
   }

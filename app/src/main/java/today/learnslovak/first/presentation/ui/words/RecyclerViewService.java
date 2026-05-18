@@ -1,9 +1,12 @@
 package today.learnslovak.first.presentation.ui.words;
 
 import android.speech.tts.TextToSpeech;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import today.learnslovak.first.domain.model.Word;
 import today.learnslovak.first.presentation.common.tts.TtsService;
 
@@ -48,7 +51,7 @@ public class RecyclerViewService {
 
   private int getLastPositionWordIdFor(List<Word> words) {
 
-    return words.size() > 0 ? words.get(words.size() - 1).getId() : 0;
+    return !words.isEmpty() ? words.get(words.size() - 1).getId() : 0;
   }
 
   int getClickWordId() {
